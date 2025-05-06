@@ -7,30 +7,22 @@ library(tidyr)
 library(ggplot2)
 library(ggbeeswarm)
 
-# load the use-scripts
-source("companion_scripts/helper-plot-theme.R")
+# load companion scripts
+source("code/functions/helpers.R")
+source("code/functions/plot-theme.R")
 
-# load the required functions
-source("R/clean_taxon_names.R")
-source("R/get_habitat_data.R")
-source("R/select_traits_tax_dist.R")
-source("R/special_names.R")
-source("R/get_trait_from_taxon.R")
-source("R/helpers.R")
-
-# load libraries required for those function
-library(igraph)
-library(assertthat)
+# load libraries the InvAlloR library
+library(InvAlloR)
 
 # check if a figure folder exists
-if (!dir.exists("figures")) {
-  dir.create("figures")
+if (!dir.exists("figures-tables")) {
+  dir.create("figures-tables")
 }
 
 # test 1: comparison with measured dry biomass values
 
 # read the test data
-dat <- readRDS("database/test_a_data_compilation.rds")
+dat <- readRDS("data/test_a_data_compilation.rds")
 head(dat)
 dim(dat)
 
@@ -100,7 +92,7 @@ summary(output$abs_error)
 sum(output$abs_error_perc > 150)/nrow(output)
 
 # null model i.e. order-level equations
-order_null <- readr::read_csv("database/test_order_level_null_model.csv")
+order_null <- readr::read_csv("data/test_order_level_null_model.csv")
 
 # check which orders there are
 unique(order_null$order)
@@ -199,63 +191,14 @@ p1 <-
         legend.spacing.y = unit(0.1, 'mm'))
 plot(p1)
 
-ggsave(filename = "figures/fig_5.pdf", p1,
-       units = "cm", width = 18, height = 19)
-
-# plot for BES
-BES_dat <- 
-  output |>
-  dplyr::filter(order %in% c("Amphipoda", "Diplostraca", "Bivalvia", "Ephemeroptera"))
-BES_cor <- 
-  cor_df |>
-  dplyr::filter(order %in% c("Amphipoda", "Diplostraca", "Bivalvia", "Ephemeroptera"))
-print(BES_cor)
-p2 <-
-  ggplot() +
-  geom_abline(
-    intercept = 0, slope = 1,
-    colour = "black", linetype = "dashed", linewidth = 2, alpha = 0.75) +
-  geom_smooth(
-    data = BES_dat,
-    mapping = aes(
-      x = log10(obs_dry_biomass_mg),
-      y = log10(dry_biomass_mg), group = group, colour = order),
-    alpha = 1, linewidth = 2, method = "lm", se = FALSE, show.legend = FALSE) +
-  geom_point(
-    data = BES_dat,
-    mapping = aes(
-      x = log10(obs_dry_biomass_mg),
-      y = log10(dry_biomass_mg), colour = order),
-    alpha = 0.5, shape = 16, size = 12, show.legend = TRUE) +
-  ylab("Estimated dry biomass (mg, log10)") +
-  xlab("Measured dry biomass (mg, log10)") +
-  scale_colour_manual(values = c("#9bb763","#411c5d", "#52703e" , "#9340d4")) +
-  theme_meta() +
-  theme(strip.background = element_blank(),
-        strip.text.x = element_blank(),
-        legend.position = "none", 
-        axis.text.x = element_text(size = 35),
-        axis.text.y = element_text(size = 35),
-        axis.title.x = element_text(size = 46),
-        axis.title.y = element_text(size = 46)) +
-  theme(
-    panel.background = element_rect(fill='transparent'), #transparent panel bg
-    plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
-    panel.grid.major = element_blank(), #remove major gridlines
-    panel.grid.minor = element_blank(), #remove minor gridlines
-    legend.background = element_rect(fill='transparent'), #transparent legend bg
-    legend.box.background = element_rect(fill='transparent') #transparent legend panel
-  )
-plot(p2)
-
-ggsave(filename = "figures/BEF_fig1.pdf", p2,
-       units = "cm", width = 37, height = 28)
+ggsave(filename = "manuscript/figures-tables/fig_5.png", p1,
+       units = "cm", width = 18, height = 19, dpi = 600)
 
 
 # test 2: comparison with equations selected by expert
 
 # load the data
-dat2 <- readRDS("database/test_b_data_compilation.rds")
+dat2 <- readRDS("data/test_b_data_compilation.rds")
 
 # sample maximum five of the same taxon
 dat2 <- 
@@ -355,7 +298,7 @@ p2 <-
         legend.key = element_rect(fill = NA))
 plot(p2)
 
-ggsave(filename = "figures/fig_S2.svg", p2, dpi = 400,
+ggsave(filename = "manuscript/figures-tables/fig_s2.png", p2, dpi = 400,
        units = "cm", width = 13.5, height = 9)
 
 cor.test(log10(output2$obs_dry_biomass_mg), log10(output2$dry_biomass_mg))

@@ -11,22 +11,23 @@ library(sf)
 library(raster)
 
 # load the function plotting theme
-source("companion_scripts/helper-plot-theme.R")
+source("code/functions/helpers.R")
 
-# load the taxon databases from the different taxonomic backbones
-tax_dat <-
-  lapply(c("col", "gbif", "itis"), function(x) {
-    y <- readRDS(file = paste0(
-      here::here("database"),
-      "/",
-      x,
-      "_taxon",
-      "_database.rds"
-    ))
+# Correct raw URLs
+database_list <- list(
+  "https://raw.githubusercontent.com/haganjam/InvAlloR-database/58dbcdee6688271ac3740dd3645d99f8e8d61e46/database/col_taxon_database.rds",
+  "https://raw.githubusercontent.com/haganjam/InvAlloR-database/58dbcdee6688271ac3740dd3645d99f8e8d61e46/database/gbif_taxon_database.rds",
+  "https://raw.githubusercontent.com/haganjam/InvAlloR-database/58dbcdee6688271ac3740dd3645d99f8e8d61e46/database/itis_taxon_database.rds"
+)
 
-    return(y)
-  })
+# Load each .rds file
+tax_dat <- lapply(database_list, function(x) {
+  readRDS(url(x))
+})
+
+# bind the rows
 tax_dat <- dplyr::bind_rows(tax_dat)
+head(tax_dat)
 
 # fix a duplicate name with slightly different spelling from the different
 # taxonomic backbones
@@ -86,14 +87,14 @@ p1 <-
         legend.position = "none")
 plot(p1)
   
-ggsave(filename = "figures/fig_2.png", p1, dpi = 400,
+ggsave(filename = "manuscript/figures-tables/fig-2.png", p1, dpi = 600,
        units = "cm", width = 20, height = 10)
 
 
 # describe the geographical coverage
 
 # load the habitat data
-hab_dat <- readRDS("database/freshwater_ecoregion_data.rds")
+hab_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvAlloR-database/58dbcdee6688271ac3740dd3645d99f8e8d61e46/database/freshwater_ecoregion_data.rds"))
 head(hab_dat)
 
 # get the unique lat-lon coordinates
@@ -155,11 +156,8 @@ p2 <-
   )
 plot(p2)
 
-ggsave(filename = "figures/fig_3a.png", p2, dpi = 400,
-       units = "cm", width = 15, height = 10)
-
 # load the habitat metadata
-hab_meta <- readRDS("database/freshwater_ecoregion_metadata.rds")
+hab_meta <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvAlloR-database/58dbcdee6688271ac3740dd3645d99f8e8d61e46/database/freshwater_ecoregion_metadata.rds"))
 head(hab_meta)
 
 # what are the unique realms?
@@ -206,7 +204,12 @@ p3 <-
   theme(legend.position = "none")
 plot(p3)
 
-ggsave(filename = "figures/fig_3b.png", p3, dpi = 400,
-       units = "cm", width = 6, height = 10)
+# combine these graphs
+library(patchwork)
+p23 <- cowplot::plot_grid(p2, p3, nrow = 1, ncol = 2, rel_widths = c(2, 1),
+                          labels = c("a", "b"), label_fontface = "plain")
+
+ggsave(filename = "manuscript/figures-tables/fig-3.png", p23, dpi = 600,
+       units = "cm", width = 20, height = 12)
 
 ### END

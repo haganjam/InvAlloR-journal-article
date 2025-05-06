@@ -11,7 +11,7 @@ set.seed(3597655)
 # test 1: prep
 
 # load datasets compiled from the literature
-test_names <- list.files("database/")
+test_names <- list.files("data-raw/")
 test_names <- test_names[grepl(pattern = "test_a_", x = test_names)]
 test_names <- test_names[grepl(pattern = ".csv", x = test_names)]
 
@@ -19,7 +19,7 @@ test_names <- test_names[grepl(pattern = ".csv", x = test_names)]
 dat_list <- vector("list", length = length(test_names))
 for(i in 1:length(test_names)) {
   
-  x <- readr::read_csv(paste0("database/", test_names[i]))
+  x <- readr::read_csv(paste0("data-raw/", test_names[i]))
   dat_list[[i]] <- x
   
 }
@@ -87,13 +87,13 @@ nrow(dat)
 summary(dat)
 
 # write out into an .rds file
-saveRDS(dat, file = paste("database", "/", "test_a_data_compilation.rds", sep = ""))
+saveRDS(dat, file = paste("data", "/", "test_a_data_compilation.rds", sep = ""))
 
 
 # test 2: prep
 
 # load dolmans data
-dat_x <- read_csv("database/test_b_dolmans_2022.csv")
+dat_x <- read_csv("data-raw/test_b_dolmans_2022.csv")
 names(dat_x)
 
 # select relevant columns
@@ -108,7 +108,7 @@ dat_x <-
 names(dat_x) <- c("reference", "taxon", "life_stage", "lat_dd", "lon_dd", "length_mm", "obs_dry_biomass_mg")
 
 # load the o'gorman data
-dat_y <- readr::read_csv("database/test_b_gorman_2017.csv")
+dat_y <- readr::read_csv("data-raw/test_b_gorman_2017.csv")
 names(dat_y)
 
 # select relevant columns
@@ -124,5 +124,5 @@ names(dat_y) <- c("reference", "taxon", "life_stage", "lat_dd", "lon_dd", "lengt
 dat_z <- dplyr::bind_rows(dat_x, dat_y)
 
 # write out into an .rds file
-saveRDS(dat_z, file = paste("database", "/", "test_b_data_compilation.rds", sep = ""))
+saveRDS(dat_z, file = paste("data", "/", "test_b_data_compilation.rds", sep = ""))
 
