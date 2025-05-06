@@ -3,8 +3,8 @@ title: "InvAlloR-manuscript"
 bibliography: references.bib
 format: 
   docx:
-    toc: FALSE
-    number-sections: true
+    toc: false
+    number-sections: false
 execute:
   warning: false
 editor: source
