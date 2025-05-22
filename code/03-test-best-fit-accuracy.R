@@ -15,8 +15,8 @@ source("code/functions/plot-theme.R")
 library(InvAlloR)
 
 # check if a figure folder exists
-if (!dir.exists("figures-tables")) {
-  dir.create("figures-tables")
+if (!dir.exists("manuscript/figures-tables")) {
+  dir.create("manuscript/figures-tables")
 }
 
 # test 1: comparison with measured dry biomass values
@@ -34,7 +34,7 @@ output <-
     body_size = "length_mm",
     latitude_dd = "lat",
     longitude_dd = "lon",
-    workflow = "workflow2",
+    workflow = "best_fit",
     trait = "equation",
     max_tax_dist = 3.5,
     gen_sp_dist = 0.5
@@ -215,7 +215,7 @@ output2 <-
     body_size = "length_mm",
     latitude_dd = "lat_dd",
     longitude_dd = "lon_dd",
-    workflow = "workflow2",
+    workflow = "best_fit",
     trait = "equation",
     max_tax_dist = 3.5,
     gen_sp_dist = 0.5
@@ -298,7 +298,7 @@ p2 <-
         legend.key = element_rect(fill = NA))
 plot(p2)
 
-ggsave(filename = "manuscript/figures-tables/fig_s2.png", p2, dpi = 400,
+ggsave(filename = "manuscript/figures-tables/fig-s2.png", p2, dpi = 400,
        units = "cm", width = 13.5, height = 9)
 
 cor.test(log10(output2$obs_dry_biomass_mg), log10(output2$dry_biomass_mg))
