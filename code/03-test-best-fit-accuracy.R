@@ -12,7 +12,6 @@ source("code/functions/helpers.R")
 source("code/functions/plot-theme.R")
 
 # load libraries the InvAlloR library
-devtools::install_github("haganjam/InvAlloR")
 library(InvAlloR)
 
 # check if a figure folder exists
@@ -192,7 +191,7 @@ p1 <-
         legend.spacing.y = unit(0.1, 'mm'))
 plot(p1)
 
-ggsave(filename = "manuscript/figures-tables/fig_5.png", p1,
+ggsave(filename = "manuscript/figures-tables/fig-5.png", p1,
        units = "cm", width = 18, height = 19, dpi = 600)
 
 
