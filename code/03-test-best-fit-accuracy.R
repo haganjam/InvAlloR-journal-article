@@ -12,6 +12,7 @@ source("code/functions/helpers.R")
 source("code/functions/plot-theme.R")
 
 # load libraries the InvAlloR library
+devtools::install_github("haganjam/InvAlloR")
 library(InvAlloR)
 
 # check if a figure folder exists

@@ -53,4 +53,4 @@ rsconnect/
 *.html
 manuscript/InvAlloR-manuscript-draft.docx
 renv
-
+*.png

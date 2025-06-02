@@ -12,6 +12,7 @@ library(raster)
 
 # load the function plotting theme
 source("code/functions/helpers.R")
+source("code/functions/plot-theme.R")
 
 # Correct raw URLs
 database_list <- list(
