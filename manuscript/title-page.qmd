@@ -1,0 +1,30 @@
+---
+format:
+  pdf:
+    keep-tex: true
+    number-sections: true
+    include-in-header: latex-header.tex
+execute:
+  warning: false
+editor: source
+---
+
+**Title:** `InvAlloR`: A database and R-package for automating biomass estimations from allometric equations for freshwater invertebrates using taxonomic backbones and geographic/habitat similarity
+
+**Authors:** James G. Hagan$^{1, 2, 3}$, Ronald Bergmann, Vincent Dolmans$^{3}$, Joren Snoeks$^{3}$, Bram Vanschoenwinkel$^{3, 4}$
+
+1.  Department of Marine Sciences, University of Gothenburg, Box 461, SE-40530, Gothenburg, Sweden
+2.  Gothenburg Global Biodiversity Centre, Box 461, SE-40530, Gothenburg, Sweden
+3.  Community Ecology Lab, Department of Biology, Vrije Universiteit Brussel (VUB), Pleinlaan 2, 1050 Brussels, Belgium.
+4.  Centre for Environmental Management, University of the Free State, Bloemfontein, South Africa.
+
+**Author contributions:** JH conceived the idea with input from JS and BV. JH, VD and JS compiled the database. JH and RB wrote the code for the R-package. JH analysed the data. JH wrote the first draft, and all authors revised the manuscript.
+
+**Data availability statement:** All code and data to reproduce the analysis in this article can be found in a Github repository: https://github.com/haganjam/InvAlloR-journal-article.
+
+**Acknowledgements:** We thank Lucas Van Passel for testing early versions of the R-package and Eoin O'Gorman for providing data used to test our approach. JH was supported by a doctoral studentship to JH from the University of Gothenburg. VD is supported by a predoctoral scholarship from the Fonds Wetenschappelijk Onderzoek in Belgium.
+
+**Words: 3407** 
+**Figures: 5** 
+**Tables: 1** 
+**References: 24**

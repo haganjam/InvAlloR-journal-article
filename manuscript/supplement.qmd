@@ -1,9 +1,10 @@
 ---
 bibliography: references.bib
-format: 
-  docx:
-    toc: false
-    number-sections: false
+format:
+  pdf:
+    keep-tex: true
+    number-sections: true
+    include-in-header: latex-header.tex
 execute:
   warning: false
 editor: source
@@ -13,16 +14,8 @@ editor: source
 
 **Title:** `InvAlloR`: A database and R-package for automating biomass estimations from allometric equations for freshwater invertebrates using taxonomic backbones and geographic/habitat similarity
 
-**Authors:** James G. Hagan$^{1, 2, 3}$, Ronald Bergmann, Vincent Dolmans$^{3}$, Joren Snoeks$^{3}$, Bram Vanschoenwinkel$^{3, 4}$
-
-1.  Department of Marine Sciences, University of Gothenburg, Box 461, SE-40530, Gothenburg, Sweden
-2.  Gothenburg Global Biodiversity Centre, Box 461, SE-40530, Gothenburg, Sweden
-3.  Community Ecology Lab, Department of Biology, Vrije Universiteit Brussel (VUB), Pleinlaan 2, 1050 Brussels, Belgium.
-4.  Centre for Environmental Management, University of the Free State, Bloemfontein, South Africa.
-
-**Author contributions:** JH conceived the idea with input from JS and BV. JH, VD and JS compiled the database. JH and RB wrote the code for the R-package. JH analysed the data. JH wrote the first draft, and all authors revised the manuscript.
-
-**Data availability statement:** All code and data to reproduce the analysis in this article can be found in a Github repository: https://github.com/haganjam/InvAlloR-journal-article.
+&nbsp;
+&nbsp;
 
 ::: {#fig-s1}
 ![](manuscript-graphics/fig-s1.png)
@@ -30,7 +23,10 @@ editor: source
 Examples of some of the taxon groups in Table 1 (main text) to illustrate the body length dimensions associated with different taxa (solid white line in silhouette). This is meant to serve as a rough guide and the body length will differ slightly based on the taxa. All silhouettes were taken from PhyloPic (www.phylopic.org/) barring (e. nauplius), (Wadhwa et al. 2014). Full credit for images are provided in @tbl-s1.
 :::
 
-::: {tbl-s1}
+\newpage
+
+::: {#tbl-s1}
+
 | Taxon               | Life-stage | Source        | Illustrator    | Licence      |
 |---------------|---------------|---------------|---------------|---------------|
 | Aeshnidae           | nymph      | PhyloPic      | Marie Russell  | CC BY 3.0    |
@@ -44,10 +40,13 @@ Examples of some of the taxon groups in Table 1 (main text) to illustrate the bo
 | Theliderma          | none       | PhyloPic      | Katie Collins  | CC0 1.0      |
 | Triops longicaudata | adult      | PhyloPic      | Africa Gomez   | CC0 1.0      |
 
-Credit for for the silhouettes used in Figure S1 along with Creative Commons Licence details.
+Credit for for the silhouettes used in @fig-s1 along with Creative Commons Licence details.
+
 :::
 
-**Testing `InvAlloR` against human experts**
+\newpage
+
+### Testing `InvAlloR` against human experts
 
 We tested whether the `best_fit` workflow led to similar biomass estimates as those based on human experts that selected equations from the literature. For this, we compared 46 dry biomass estimates from 24 species using the `best_fit` workflow with dry biomass estimates from experts who chose length - dry biomass equations based on literature searches (@ogorman2017; Dolmans, unpublished data). We used the same length data for both estimates. This comparison is relevant because choosing equations from the literature is the standard protocol for estimating biomass in freshwater ecology. As previously, we correlated dry biomass estimated from the `best_fit` workflow with dry biomass from expert-chosen equations using a Pearson's correlation coefficient (log10-log10 scale). Dry biomass estimated by `InvAlloR` correlated strongly with the expert-derived dry biomass (Pearson's r = 0.90, CI95%: 0.83 - 0.95, log10-log10 scale) and individual data points generally clustered around the 1:1 line which indicated no systematic over or underestimation (@fig-s2).
 
@@ -56,3 +55,7 @@ We tested whether the `best_fit` workflow led to similar biomass estimates as th
 
 The relationship between expert-derived dry biomass (mg, log10) based on literature searches and the estimated dry biomass (mg, log10) from InvTraitR for 46 individuals from 24 species. Data from Dolmans (unpublished) and O'Gorman et al. (2017). The black, dashed line is the 1:1 line. The Pearson correlation coefficient (r) on a log10-log10 scale is also shown.
 :::
+
+\newpage
+
+### Reference list

@@ -1,9 +1,10 @@
 ---
 bibliography: references.bib
-format: 
-  docx:
-    toc: false
-    number-sections: false
+format:
+  pdf:
+    keep-tex: true
+    number-sections: true
+    include-in-header: latex-header.tex
 execute:
   warning: false
 editor: source
@@ -12,19 +13,6 @@ editor: source
 **Main text**
 
 **Title:** `InvAlloR`: A database and R-package for automating biomass estimations from allometric equations for freshwater invertebrates using taxonomic backbones and geographic/habitat similarity
-
-**Authors:** James G. Hagan$^{1, 2, 3}$, Ronald Bergmann, Vincent Dolmans$^{3}$, Joren Snoeks$^{3}$, Bram Vanschoenwinkel$^{3, 4}$
-
-1.  Department of Marine Sciences, University of Gothenburg, Box 461, SE-40530, Gothenburg, Sweden
-2.  Gothenburg Global Biodiversity Centre, Box 461, SE-40530, Gothenburg, Sweden
-3.  Community Ecology Lab, Department of Biology, Vrije Universiteit Brussel (VUB), Pleinlaan 2, 1050 Brussels, Belgium.
-4.  Centre for Environmental Management, University of the Free State, Bloemfontein, South Africa.
-
-**Author contributions:** JH conceived the idea with input from JS and BV. JH, VD and JS compiled the database. JH and RB wrote the code for the R-package. JH analysed the data. JH wrote the first draft, and all authors revised the manuscript.
-
-**Data availability statement:** All code and data to reproduce the analysis in this article can be found in a Github repository: https://github.com/haganjam/InvAlloR-journal-article.
-
-**Words:** **Figures:** **Tables:** **References:**
 
 ### Abstract
 
@@ -71,11 +59,10 @@ The third component of the database is the latitude-longitude coordinates associ
 #| label: tbl-1
 #| tbl-cap: "Classification used in the `InvAlloR` database to describe the major groups of freshwater invertebrates globally. The groups 1 and 2 are not strict taxonomic entities. Also included is the life-stage classification and the body-size measurement used in the equations (BL - body length, SH - shell height and SW - shell width). The 'Example taxon' column gives an example of a taxa present in the equation database corresponding to that group (if NA then the database does not contain equations for that group)."
 #| echo: false
-
-readRDS("figures-tables/table-1.rds")
+library(kableExtra)
+readRDS("figures-tables/table-1.rds") |> kable_styling(font_size = 8)
 
 ```
-
 
 Classification used in the `InvAlloR` database to describe the major groups of freshwater invertebrates found in freshwater habitats globally. 'Group 1' and 'Group 2' are not strict taxonomic entities. Also included is the life-stage classification and the body-size measurement used in the equations: BL - body length, SH - shell height and SW - shell width. The 'Example taxon' column gives an example of a taxa present in the equation database corresponding to that group (if NA then the database does not contain equations for that group).
 
@@ -157,8 +144,6 @@ All analyses were conducted in R v4.2.3 (R Core Team 2023). In addition to any R
 ### Conclusions
 
 Our database of length-biomass equations and complementary R-package (`InvAlloR`) provides an automated equation selection procedure that can estimate dry biomass using body size data for freshwater invertebrate taxa that approximates measured dry biomass (@fig-5) and is more accurate than order-level length-biomass equations. Moreover, the method is fully reproducible which makes it a more systematic and standardised way to estimate biomass of freshwater invertebrates than individual researchers compiling their own sets of length-biomass equations. Finally, the method used to select equations using is general and can be used for any taxon-specific trait and is particularly useful for taxonomic groups (i) without robust phylogenies and (ii) where identifications are often uncertain. For example, our approach could be extended and used for classifying taxa into feeding groups or habitat preferences based on data from existing trait databases or to link taxonomically similar species to continuous traits such as body size or macronutrient content that are already available in the literature [@moreau2021].
-
-**Acknowledgements:** We thank Lucas Van Passel for testing early versions of the R-package and Eoin O'Gorman for providing data used to test our approach. JH was supported by a doctoral studentship to JH from the University of Gothenburg. VD is supported by a predoctoral scholarship from the Fonds Wetenschappelijk Onderzoek in Belgium.
 
 
 ### Reference list
