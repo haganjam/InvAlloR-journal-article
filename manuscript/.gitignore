@@ -1,3 +1,8 @@
 
 InvAlloR-manuscript-draft.docx
-figures-tables/
+figures-tables/fig-3.png
+figures-tables/fig-s2.png
+
+*.tex
+*.pdf
+*.png
