@@ -22,7 +22,9 @@ editor: source
 
 **Data availability statement:** All code and data to reproduce the analysis in this article can be found in a Github repository: https://github.com/haganjam/InvAlloR-journal-article.
 
-**Acknowledgements:** We thank Lucas Van Passel for testing early versions of the R-package and Eoin O'Gorman for providing data used to test our approach. JH was supported by a doctoral studentship to JH from the University of Gothenburg. VD is supported by a predoctoral scholarship from the Fonds Wetenschappelijk Onderzoek in Belgium.
+**Conflict of interest statement:** We have no conflicts of interest.
+
+**Acknowledgements:** We thank Lucas Van Passel for testing early versions of the R-package and Eoin O'Gorman for providing data used to test our approach. JH was supported by a doctoral studentship to JH from the University of Gothenburg and, currently, by a scholarship from the Vrije Universiteit Brussel. VD is supported by a predoctoral scholarship from the Fonds Wetenschappelijk Onderzoek in Belgium.
 
 **Words: 3407** 
 **Figures: 5** 

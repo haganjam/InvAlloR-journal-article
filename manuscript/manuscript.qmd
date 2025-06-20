@@ -16,7 +16,10 @@ editor: source
 
 ### Abstract
 
-Biomass data are increasingly used to gain better insights into the functioning of freshwater ecosystems. However, because weighing organisms is notoriously labour intensive, most workers rely on allometric equations to combine available information on body dimensions and species abundance into proxies of biomass. This approach is prone to errors due to taxonomic or geographic generalisation and application beyond the body size range used to make the equation. Here, we compiled a database of more than 350 length-biomass equations for freshwater invertebrates and developed an R-package (`InvAlloR`) that automatically selects the most suitable length-biomass equation for a range of freshwater invertebrates based on taxonomic similarity and geographic/habitat similarity and calculates the resulting biomass estimate.
+1. Biomass data are increasingly used to gain better insights into the functioning of freshwater ecosystems. However, because weighing organisms is notoriously labour intensive
+2. To overcome this, most workers rely on allometric equations to combine available information on body dimensions and species abundance into proxies of biomass. This approach is prone to errors due to taxonomic or geographic generalisation and application beyond the body size range used to make the equation. 
+3. Here, we compiled a database of more than 350 length-biomass equations for freshwater invertebrates and developed an R-package (`InvAlloR`) that automatically selects the most suitable length-biomass equation for a range of freshwater invertebrates based on taxonomic similarity and geographic/habitat similarity and calculates the resulting biomass estimate.
+4. `InvAlloR` therefore provides a practical, user-friendly tool that streamlines biomass estimation and helps standardize invertebrate biomass data across freshwater ecological studies.
 
 ### Introduction
 
